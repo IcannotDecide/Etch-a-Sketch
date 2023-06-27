@@ -15,11 +15,13 @@ createGrid(16);
 
 
 function createBoxOnHover() {
-const box = document.querySelectorAll(".box");
-box.forEach(div => div.addEventListener('mouseover', hover), {
-    capture: false
-})
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', hover), {
+        capture: false
+    })
 };
+
+createBoxOnHover();
 
 function hover(e) {
     e.target.style.backgroundColor === "" ?
