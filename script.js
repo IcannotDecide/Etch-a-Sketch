@@ -85,8 +85,13 @@ function rainbowHover(e) {
 };
 
 function erase() {
-
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', eraseHover))
 };
+
+function eraseHover(e) {
+    e.target.style.backgroundColor = "black";
+}
 
 function clearGridFunc() {
     const box = document.querySelectorAll(".box");
