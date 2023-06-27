@@ -1,0 +1,4 @@
+Create an array which contains colours which randomly get selected
+when house hovers over a grid.
+
+Create a button which allows you to change grid size. Max size = 100.
