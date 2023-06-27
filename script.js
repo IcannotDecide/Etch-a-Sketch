@@ -16,15 +16,7 @@ function createGrid(size) {
 
 createGrid(16);
 
-function createBoxOnHover() {
-    const box = document.querySelectorAll(".box");
-    box.forEach(div => div.addEventListener('mouseover', hover), {  
-    })
-};
-
-function hover(e) {
-    e.target.style.backgroundColor = "pink"
-};
+selectColour()
 
 function changeGridSize() {
     const value = prompt("Enter a number that you want the grid size to be")
@@ -64,8 +56,13 @@ function addInputListener() {
 addInputListener()
 
 function selectColour() {
-    console.log("newSelectColour")
     const box = document.querySelectorAll(".box");
+
+    box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
+    box.forEach(div => div.removeEventListener('mouseover', hover));
+    box.forEach(div => div.removeEventListener('mouseover', eraseHover))
+
+    
     box.forEach(div => div.addEventListener('mouseover', selectColourHover))
 }
 
@@ -76,7 +73,12 @@ function selectColourHover(e) {
 
 function drawRainbows() {
     const box = document.querySelectorAll(".box");
-    box.forEach(div => div.addEventListener('mouseover', rainbowHover))
+
+    box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
+    box.forEach(div => div.removeEventListener('mouseover', hover));
+    box.forEach(div => div.removeEventListener('mouseover', eraseHover))
+
+    box.forEach(div => div.addEventListener('mouseover', rainbowHover));
 };
 
 function rainbowHover(e) {
@@ -86,6 +88,12 @@ function rainbowHover(e) {
 
 function erase() {
     const box = document.querySelectorAll(".box");
+
+    // For removing event listeners
+    box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
+    box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
+    box.forEach(div => div.removeEventListener('mouseover', hover));
+
     box.forEach(div => div.addEventListener('mouseover', eraseHover))
 };
 
