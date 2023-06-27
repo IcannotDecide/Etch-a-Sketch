@@ -16,7 +16,15 @@ function createGrid(size) {
 
 createGrid(16);
 
-selectColour()
+function createBoxOnHover() {
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', hover), {  
+    })
+};
+
+function hover(e) {
+    e.target.style.backgroundColor = input.value;
+};
 
 function changeGridSize() {
     const value = prompt("Enter a number that you want the grid size to be")
