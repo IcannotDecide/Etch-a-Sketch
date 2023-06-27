@@ -1,35 +1,30 @@
 * {
     box-sizing: border-box;
-    border: 0;
-    margin: 0;
 }
 
-.mainContainer {
+.main {
     display: flex;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
+    gap: 20px;
+}
+
+.buttonContainer {
+    display: flex;
     align-items: center;
-    flex: 1;
+    
 }
 
-.container {
+.gridContainer {
     display: flex;
+    justify-content: center;
 }
+
 
 .box {
-    border: solid black 1px;
+    border: 1px black solid;
     width: 30px;
     height: 30px;
 }
 
-.boxHover {
-    background-color: black;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
+button {
+    height: 30px;
 }
