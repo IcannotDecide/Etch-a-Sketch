@@ -2,11 +2,12 @@ const gridContainer = document.querySelector(".gridContainer");
 
 
 function createGrid(size) {
+    const widthHeight = 500/size;
     for (let i = 0; i < size; i++) {
         gridContainer.innerHTML += '<div class="container"></div>'
         for (let j = 0; j < size; j++) {
             let container = gridContainer.lastChild;
-            container.innerHTML += '<div class="box"></div>'
+            container.innerHTML += `<div style="width: ${widthHeight}px; height: ${widthHeight}px" class="box"></div>`
         };
     };
 };
