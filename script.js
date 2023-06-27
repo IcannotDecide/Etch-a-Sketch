@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector(".gridContainer");
 const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+const input = document.querySelector('input');
 
 
 function createGrid(size) {
@@ -17,14 +18,12 @@ createGrid(16);
 
 function createBoxOnHover() {
     const box = document.querySelectorAll(".box");
-    box.forEach(div => div.addEventListener('mouseover', hover), {
-       
+    box.forEach(div => div.addEventListener('mouseover', hover), {  
     })
 };
 
 function hover(e) {
-    const randomNum = Math.floor(Math.random() * 6)
-        e.target.style.backgroundColor = "pink"
+    e.target.style.backgroundColor = "pink"
 };
 
 function changeGridSize() {
@@ -33,8 +32,10 @@ function changeGridSize() {
         removeContainer()
         createGrid(+value);
         createBoxOnHover();
+    } else if (value === null) {
+        return
     } else {
-      alert("please enter a value that is a number and less than 100")
+        alert("please enter a value that is a number and less than 100")
     }
 };
 
@@ -55,5 +56,57 @@ function createBoxOnHover() {
 
 createBoxOnHover();
 
-const button = document.querySelectorAll('button')[0];
-button.addEventListener('click', changeGridSize);
+function addInputListener() {
+    input.addEventListener('change', selectColour);
+    console.log("on")
+};
+
+addInputListener()
+
+function selectColour() {
+    console.log("newSelectColour")
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', selectColourHover))
+}
+
+function selectColourHover(e) {
+    const colour = input.value;
+    e.target.style.backgroundColor = `${colour}`;
+}
+
+function drawRainbows() {
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', rainbowHover))
+};
+
+function rainbowHover(e) {
+    const randomNum = Math.floor(Math.random() * 6)
+    e.target.style.backgroundColor = colours[randomNum];
+};
+
+function erase() {
+
+};
+
+function clearGridFunc() {
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.style.backgroundColor = "black")
+};
+
+
+
+const newGrid = document.querySelector('button[data-btn="newGrid"]');
+newGrid.addEventListener('click', changeGridSize);
+
+const colourSelect = document.querySelector('button[data-btn="colourSelect"]');
+colourSelect.addEventListener('click', () => input.click());
+
+const rainbow = document.querySelector('button[data-btn="rainbow"]');
+rainbow.addEventListener('click', drawRainbows);
+
+const eraser = document.querySelector('button[data-btn="eraser"]');
+eraser.addEventListener('click', erase);
+
+const clearGrid = document.querySelector('button[data-btn="clearGrid"]');
+clearGrid.addEventListener('click', clearGridFunc);
+
