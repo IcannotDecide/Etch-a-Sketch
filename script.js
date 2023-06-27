@@ -18,7 +18,6 @@ createGrid(16);
 
 function addInputListener() {
     input.addEventListener('change', selectColour);
-    console.log("on")
 };
 
 addInputListener()
