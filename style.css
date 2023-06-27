@@ -17,11 +17,11 @@
 }
 
 .box {
-    border: solid black;
+    border: solid black 1px;
     width: 30px;
     height: 30px;
 }
 
 .boxHover {
-    background-color: pink;
+    background-color: black;
 }
