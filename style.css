@@ -10,19 +10,19 @@
 .buttonContainer {
     display: flex;
     align-items: center;
-    
+    justify-content: center;
 }
 
 .gridContainer {
     display: flex;
-    justify-content: center;
+    height: 480px;
+    width: 480px;
 }
 
 
 .box {
     border: 1px black solid;
-    width: 30px;
-    height: 30px;
+    padding: 10px;
 }
 
 button {

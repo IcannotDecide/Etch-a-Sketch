@@ -12,3 +12,48 @@ function createGrid(size) {
 };
 
 createGrid(16);
+
+function createBoxOnHover() {
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', hover), {
+        capture: false
+    })
+};
+
+function hover(e) {
+    e.target.style.backgroundColor === "" ?
+        e.target.style.backgroundColor = "pink" :
+        e.target.style.backgroundColor = "";
+    e.stopPropagation();
+};
+
+function changeGridSize() {
+    const value = prompt("Enter a number that you want the grid size to be")
+    if (+value && +value < 100) {
+        removeContainer()
+        createGrid(+value);
+        createBoxOnHover();
+    } else {
+      alert("please enter a value that is a number and less than 100")
+    }
+};
+
+
+function removeContainer() {
+    let container = document.querySelectorAll('.container');
+    for (let i = 0; i < container.length; i++) {
+        container[i].remove()
+    }
+};
+
+function createBoxOnHover() {
+    const box = document.querySelectorAll(".box");
+    box.forEach(div => div.addEventListener('mouseover', hover), {
+        capture: false
+    })
+};
+
+createBoxOnHover();
+
+const button = document.querySelector('button');
+button.addEventListener('click', changeGridSize);
