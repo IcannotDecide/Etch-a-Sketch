@@ -17,15 +17,12 @@ createGrid(16);
 function createBoxOnHover() {
     const box = document.querySelectorAll(".box");
     box.forEach(div => div.addEventListener('mouseover', hover), {
-        capture: false
+       
     })
 };
 
 function hover(e) {
-    e.target.style.backgroundColor === "" ?
-        e.target.style.backgroundColor = "pink" :
-        e.target.style.backgroundColor = "";
-    e.stopPropagation();
+        e.target.style.backgroundColor = "pink"
 };
 
 function changeGridSize() {
