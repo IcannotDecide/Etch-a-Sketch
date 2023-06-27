@@ -1,4 +1,5 @@
 const gridContainer = document.querySelector(".gridContainer");
+const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 
 
 function createGrid(size) {
@@ -22,6 +23,7 @@ function createBoxOnHover() {
 };
 
 function hover(e) {
+    const randomNum = Math.floor(Math.random() * 6)
         e.target.style.backgroundColor = "pink"
 };
 
@@ -53,5 +55,5 @@ function createBoxOnHover() {
 
 createBoxOnHover();
 
-const button = document.querySelector('button');
+const button = document.querySelectorAll('button')[0];
 button.addEventListener('click', changeGridSize);
