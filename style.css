@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
 .container {
@@ -24,4 +25,11 @@
 
 .boxHover {
     background-color: black;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
 }
