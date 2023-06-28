@@ -1,3 +1,7 @@
 Optimise code
 
 When I create a new grid keep the colour I was using before
+
+Change mouseover to mousedown
+https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event#examples
+See this example for how to do that
