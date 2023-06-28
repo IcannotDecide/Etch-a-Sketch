@@ -1,3 +1,2 @@
-Change solution
-
-Adding and removing eventListeners quickly crashes the web page
+Fix bug
+Can't go from a selected colour to rainbow, or eraser mode back to the colour that was previously selected. This is because colour select mode only runs when the selected colour changes and not when the mode changes.
