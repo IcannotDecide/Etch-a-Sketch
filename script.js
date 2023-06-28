@@ -1,7 +1,17 @@
 const gridContainer = document.querySelector(".gridContainer");
 const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 const input = document.querySelector('input');
+let mousedown = false;
 
+window.addEventListener("mousedown", () => {
+    let mousedown = true;
+    console.log(mousedown)
+})
+
+window.addEventListener("mouseup", () => {
+    let mousedown = false;
+    console.log(mousedown)
+})
 
 function createGrid(size) {
     const widthHeight = 500/size;
