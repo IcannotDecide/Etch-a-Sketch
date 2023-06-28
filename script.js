@@ -4,42 +4,10 @@ const input = document.querySelector('input');
 let mousedown = false;
 let lastUsed;
 
+window.onmousedown = () => mousedown = true;
 
+window.onmouseup = () => mousedown = false;
 
-function selectColourMouseDown() {
-    gridContainer.addEventListener("mousedown", () => {
-        mousedown = true;
-        lastUsed = selectColourMouseDown();
-        selectColour();
-    });
-};
-
-function drawRainbowsMouseDown() {
-    gridContainer.addEventListener("mousedown", () => {
-        mousedown = true;
-        lastUsed = drawRainbowsMouseDown();
-        drawRainbows();
-    });
-};
-
-function eraseMouseDown() {
-    gridContainer.addEventListener("mousedown", () => {
-        mousedown = true;
-        lastUsed = eraseMouseDown();
-        erase();
-    });
-};
-
-selectColourMouseDown()
-
-window.addEventListener("mouseup", () => {
-    const box = document.querySelectorAll(".box");
-    mousedown = false;
-    ;
-    box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
-    box.forEach(div => div.removeEventListener('mouseover', eraseHover))
-    box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
-})
 
 function createGrid(size) {
     const widthHeight = 500 / size;
@@ -55,7 +23,7 @@ function createGrid(size) {
 createGrid(16);
 
 function addInputListener() {
-    input.addEventListener('change', selectColourMouseDown);
+    input.addEventListener('change', selectColour);
 };
 
 addInputListener()
@@ -68,10 +36,16 @@ function selectColour() {
 
 
     box.forEach(div => div.addEventListener('mouseover', selectColourHover));
+    box.forEach(div => div.addEventListener('mousedown', selectColourHover));
 };
 
+selectColour();
+
 function selectColourHover(e) {
+    if (e.type === 'mouseover' && !mousedown) return;
     const colour = input.value;
+    console.log("this");
+
     e.target.style.backgroundColor = `${colour}`;
 };
 
@@ -105,9 +79,12 @@ function drawRainbows() {
     box.forEach(div => div.removeEventListener('mouseover', eraseHover))
 
     box.forEach(div => div.addEventListener('mouseover', rainbowHover));
+    box.forEach(div => div.addEventListener('mousedown', rainbowHover));
 };
 
 function rainbowHover(e) {
+    if (e.type === 'mouseover' && !mousedown) return;
+    console.log(e.type)
     const randomNum = Math.floor(Math.random() * 6)
     e.target.style.backgroundColor = colours[randomNum];
 };
@@ -120,9 +97,12 @@ function erase() {
     box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
 
     box.forEach(div => div.addEventListener('mouseover', eraseHover))
+    box.forEach(div => div.addEventListener('mousedown', eraseHover));
+
 };
 
 function eraseHover(e) {
+    if (e.type === 'mouseover' && !mousedown) return;
     e.target.style.backgroundColor = "black";
 }
 
@@ -140,10 +120,10 @@ const colourSelect = document.querySelector('button[data-btn="colourSelect"]');
 colourSelect.addEventListener('click', () => input.click());
 
 const rainbow = document.querySelector('button[data-btn="rainbow"]');
-rainbow.addEventListener('click', drawRainbowsMouseDown);
+rainbow.addEventListener('click', drawRainbows);
 
 const eraser = document.querySelector('button[data-btn="eraser"]');
-eraser.addEventListener('click', eraseMouseDown);
+eraser.addEventListener('click', erase);
 
 const clearGrid = document.querySelector('button[data-btn="clearGrid"]');
 clearGrid.addEventListener('click', clearGridFunc);
