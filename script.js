@@ -2,13 +2,14 @@ const gridContainer = document.querySelector(".gridContainer");
 const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 const input = document.querySelector('input');
 let mousedown = false;
+let lastUsed;
 
 
 
 function selectColourMouseDown() {
     gridContainer.addEventListener("mousedown", () => {
         mousedown = true;
-        
+        lastUsed = selectColourMouseDown();
         selectColour();
     });
 };
@@ -16,7 +17,7 @@ function selectColourMouseDown() {
 function drawRainbowsMouseDown() {
     gridContainer.addEventListener("mousedown", () => {
         mousedown = true;
-        
+        lastUsed = drawRainbowsMouseDown();
         drawRainbows();
     });
 };
@@ -24,7 +25,7 @@ function drawRainbowsMouseDown() {
 function eraseMouseDown() {
     gridContainer.addEventListener("mousedown", () => {
         mousedown = true;
-        
+        lastUsed = eraseMouseDown();
         erase();
     });
 };
@@ -81,7 +82,7 @@ function changeGridSize() {
     if (+value && +value < 100) {
         removeContainer()
         createGrid(+value);
-        selectColourMouseDown();
+        lastUsed;
     } else if (value === null) {
         return
     } else {
