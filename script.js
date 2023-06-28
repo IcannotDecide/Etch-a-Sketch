@@ -47,7 +47,6 @@ selectColour()
 function selectColourHover(e) {
     if (e.type === 'mouseover' && !mousedown) return;
     const colour = input.value;
-    console.log("this");
 
     e.target.style.backgroundColor = `${colour}`;
 };
@@ -91,7 +90,6 @@ function drawRainbows() {
 
 function rainbowHover(e) {
     if (e.type === 'mouseover' && !mousedown) return;
-    console.log(e.type)
     const randomNum = Math.floor(Math.random() * 6)
     e.target.style.backgroundColor = colours[randomNum];
 };
