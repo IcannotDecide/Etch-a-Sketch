@@ -3,23 +3,45 @@ const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 const input = document.querySelector('input');
 let mousedown = false;
 
-/*gridContainer.addEventListener("mousedown", () => {
-    mousedown = true;
-    console.log(mousedown)
-    selectColour();
-});*/
 
-gridContainer.addEventListener("mouseup", () => {
+
+function selectColourMouseDown() {
+    gridContainer.addEventListener("mousedown", () => {
+        mousedown = true;
+        
+        selectColour();
+    });
+};
+
+function drawRainbowsMouseDown() {
+    gridContainer.addEventListener("mousedown", () => {
+        mousedown = true;
+        
+        drawRainbows();
+    });
+};
+
+function eraseMouseDown() {
+    gridContainer.addEventListener("mousedown", () => {
+        mousedown = true;
+        
+        erase();
+    });
+};
+
+selectColourMouseDown()
+
+window.addEventListener("mouseup", () => {
     const box = document.querySelectorAll(".box");
     mousedown = false;
-    console.log(mousedown);
+    ;
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
     box.forEach(div => div.removeEventListener('mouseover', eraseHover))
     box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
 })
 
 function createGrid(size) {
-    const widthHeight = 500/size;
+    const widthHeight = 500 / size;
     for (let i = 0; i < size; i++) {
         gridContainer.innerHTML += '<div class="container"></div>'
         for (let j = 0; j < size; j++) {
@@ -32,7 +54,7 @@ function createGrid(size) {
 createGrid(16);
 
 function addInputListener() {
-    input.addEventListener('change', selectColour);
+    input.addEventListener('change', selectColourMouseDown);
 };
 
 addInputListener()
@@ -42,7 +64,7 @@ function selectColour() {
 
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
     box.forEach(div => div.removeEventListener('mouseover', eraseHover))
-    
+
 
     box.forEach(div => div.addEventListener('mouseover', selectColourHover));
 };
@@ -59,7 +81,7 @@ function changeGridSize() {
     if (+value && +value < 100) {
         removeContainer()
         createGrid(+value);
-        selectColour();
+        selectColourMouseDown();
     } else if (value === null) {
         return
     } else {
@@ -117,10 +139,10 @@ const colourSelect = document.querySelector('button[data-btn="colourSelect"]');
 colourSelect.addEventListener('click', () => input.click());
 
 const rainbow = document.querySelector('button[data-btn="rainbow"]');
-rainbow.addEventListener('click', drawRainbows);
+rainbow.addEventListener('click', drawRainbowsMouseDown);
 
 const eraser = document.querySelector('button[data-btn="eraser"]');
-eraser.addEventListener('click', erase);
+eraser.addEventListener('click', eraseMouseDown);
 
 const clearGrid = document.querySelector('button[data-btn="clearGrid"]');
 clearGrid.addEventListener('click', clearGridFunc);
