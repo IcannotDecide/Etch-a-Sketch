@@ -3,14 +3,19 @@ const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 const input = document.querySelector('input');
 let mousedown = false;
 
-window.addEventListener("mousedown", () => {
-    let mousedown = true;
+/*gridContainer.addEventListener("mousedown", () => {
+    mousedown = true;
     console.log(mousedown)
-})
+    selectColour();
+});*/
 
-window.addEventListener("mouseup", () => {
-    let mousedown = false;
-    console.log(mousedown)
+gridContainer.addEventListener("mouseup", () => {
+    const box = document.querySelectorAll(".box");
+    mousedown = false;
+    console.log(mousedown);
+    box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
+    box.forEach(div => div.removeEventListener('mouseover', eraseHover))
+    box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
 })
 
 function createGrid(size) {
@@ -37,9 +42,9 @@ function selectColour() {
 
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
     box.forEach(div => div.removeEventListener('mouseover', eraseHover))
-
     
-    box.forEach(div => div.addEventListener('mouseover', selectColourHover))
+
+    box.forEach(div => div.addEventListener('mouseover', selectColourHover));
 };
 
 function selectColourHover(e) {
@@ -48,8 +53,6 @@ function selectColourHover(e) {
 };
 
 input.value = "#f086e0";
-
-selectColour()
 
 function changeGridSize() {
     const value = prompt("Enter a number that you want the grid size to be")
