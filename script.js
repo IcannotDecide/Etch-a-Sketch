@@ -8,7 +8,6 @@ window.onmousedown = () => mousedown = true;
 
 window.onmouseup = () => mousedown = false;
 
-
 function createGrid(size) {
     const widthHeight = 500 / size;
     for (let i = 0; i < size; i++) {
@@ -29,6 +28,8 @@ function addInputListener() {
 addInputListener()
 
 function selectColour() {
+    lastUsed = selectColour;
+
     const box = document.querySelectorAll(".box");
 
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
@@ -39,7 +40,7 @@ function selectColour() {
     box.forEach(div => div.addEventListener('mousedown', selectColourHover));
 };
 
-selectColour();
+selectColour()
 
 function selectColourHover(e) {
     if (e.type === 'mouseover' && !mousedown) return;
@@ -56,7 +57,7 @@ function changeGridSize() {
     if (+value && +value < 100) {
         removeContainer()
         createGrid(+value);
-        lastUsed;
+        lastUsed();
     } else if (value === null) {
         return
     } else {
@@ -73,6 +74,8 @@ function removeContainer() {
 };
 
 function drawRainbows() {
+    lastUsed = drawRainbows;
+
     const box = document.querySelectorAll(".box");
 
     box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
@@ -90,9 +93,10 @@ function rainbowHover(e) {
 };
 
 function erase() {
+    lastUsed = erase;
+
     const box = document.querySelectorAll(".box");
 
-    // For removing event listeners
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
     box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
 
