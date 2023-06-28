@@ -22,7 +22,7 @@ function createGrid(size) {
 createGrid(16);
 
 function addInputListener() {
-    input.addEventListener('change', selectColour);
+    input.addEventListener('input', selectColour);
 };
 
 addInputListener()
@@ -33,7 +33,9 @@ function selectColour() {
     const box = document.querySelectorAll(".box");
 
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
+    box.forEach(div => div.removeEventListener('mousedown', rainbowHover));
     box.forEach(div => div.removeEventListener('mouseover', eraseHover))
+    box.forEach(div => div.removeEventListener('mousedown', eraseHover));
 
 
     box.forEach(div => div.addEventListener('mouseover', selectColourHover));
@@ -79,7 +81,9 @@ function drawRainbows() {
     const box = document.querySelectorAll(".box");
 
     box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
+    box.forEach(div => div.removeEventListener('mousedown', selectColourHover));
     box.forEach(div => div.removeEventListener('mouseover', eraseHover))
+    box.forEach(div => div.removeEventListener('mousedown', eraseHover));
 
     box.forEach(div => div.addEventListener('mouseover', rainbowHover));
     box.forEach(div => div.addEventListener('mousedown', rainbowHover));
@@ -98,7 +102,9 @@ function erase() {
     const box = document.querySelectorAll(".box");
 
     box.forEach(div => div.removeEventListener('mouseover', rainbowHover));
+    box.forEach(div => div.removeEventListener('mousedown', rainbowHover));
     box.forEach(div => div.removeEventListener('mouseover', selectColourHover));
+    box.forEach(div => div.removeEventListener('mousedown', selectColourHover));
 
     box.forEach(div => div.addEventListener('mouseover', eraseHover))
     box.forEach(div => div.addEventListener('mousedown', eraseHover));
