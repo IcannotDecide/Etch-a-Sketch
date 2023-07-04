@@ -127,7 +127,7 @@ const newGrid = document.querySelector('button[data-btn="newGrid"]');
 newGrid.addEventListener('click', changeGridSize);
 
 const colourSelect = document.querySelector('button[data-btn="colourSelect"]');
-colourSelect.addEventListener('click', () => input.click());
+colourSelect.addEventListener('click', () => {selectColour(); input.click()});
 
 const rainbow = document.querySelector('button[data-btn="rainbow"]');
 rainbow.addEventListener('click', drawRainbows);
