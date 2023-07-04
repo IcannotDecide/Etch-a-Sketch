@@ -90,8 +90,10 @@ function drawRainbows() {
 
 function rainbowHover(e) {
     if (e.type === 'mouseover' && !mousedown) return;
-    const randomNum = Math.floor(Math.random() * 6)
-    e.target.style.backgroundColor = colours[randomNum];
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 };
 
 function erase() {
